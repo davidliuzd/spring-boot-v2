@@ -20,7 +20,7 @@ import net.liuzd.spring.boot.v2.web.HelloController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class Chapter1ApplicationTests {
+public class ApplicationTests {
 
 	private MockMvc mvc;
 
