@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.context.WebApplicationContext;
 
 import net.liuzd.spring.boot.v2.repository.CustomerService;
 
@@ -26,7 +25,7 @@ public class ApplicationTests {
     }
 
     @Test
-    public void test() throws Exception {
+    public void test() throws Exception {   
         // 插入5个用户
         customerService.create("a", LocalDateTime.now());
         customerService.create("b", LocalDateTime.now());
