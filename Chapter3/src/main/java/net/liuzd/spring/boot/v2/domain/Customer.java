@@ -1,6 +1,6 @@
 package net.liuzd.spring.boot.v2.domain;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 
@@ -11,7 +11,7 @@ public class Customer {
 
     private String    firstName;
 
-    private LocalDate dateOfBirth;
+    private LocalDateTime dateOfBirth;
 
     public Long getId() {
         return this.id;
@@ -29,11 +29,11 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public LocalDate getDateOfBirth() {
+    public LocalDateTime getDateOfBirth() {
         return this.dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDateTime dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
