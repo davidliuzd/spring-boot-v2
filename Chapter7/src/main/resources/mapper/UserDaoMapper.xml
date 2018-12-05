@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.liuzd.spring.boot.v2.mapper.UserMapper">
+
+	<resultMap id="userMap"
+		type="net.liuzd.spring.boot.v2.domain.User">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="age" column="AGE" />
+	</resultMap>
+
+	<sql id="queryCondition">
+		<where>
+			<if test="id != null and id != ''">
+				and ID = #{id}
+			</if>
+			<if test="name != null and name != ''">
+				and NAME = #{name}
+			</if>
+			<if test="age != null">
+				and AGE = #{age}
+			</if>
+		</where>
+	</sql>
+
+	<select id="getList" parameterType="map" resultMap="userMap">
+		SELECT id,name,age FROM user
+		<include refid="queryCondition" />
+	</select>
+
+</mapper>
