@@ -1,0 +1,41 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver  
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 1
+      maximum-pool-size: 5
+      pool-name: bosPoolName
+      max-lifetime: 1800000
+      auto-commit: true
+      idle-timeout: 30000
+      connection-timeout: 30000
+      
+
+
+# Logger Config
+logging:
+  level:
+    net.liuzd.spring.boot.v2: debug
+# MyBatis-Plus 配置
+mybatis-plus:
+  # 扫描 mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: net.liuzd.spring.boot.v2.entity
+  type-enums-package: net.liuzd.spring.boot.v2.entity.enums
+  global-config:
+    id-type: 0  # 0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    db-column-underline: false
+    refresh-mapper: true
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  configuration:
+    map-underscore-to-camel-case: true
+    #cache-enabled: true #配置的缓存的全局开关
+    #lazyLoadingEnabled: true #延时加载的开关
+    #multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
