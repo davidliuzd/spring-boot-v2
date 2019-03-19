@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.liuzd.spring.boot.v2.mapper.UserMapper">
+
+	<select id="selectUserPage" resultType="net.liuzd.spring.boot.v2.entity.User">
+        select 
+        	  id,
+			  name,
+			  age,
+			  email,
+			  create_time,
+			  modify_time,
+			  mark
+        from user
+        <trim prefix="where" prefixOverrides="AND">
+            <if test="selectInt != null">
+                age = #{selectInt}
+            </if>
+            <if test="selectStr != null">
+                AND name = #{selectStr}
+            </if>
+            AND deleted = 0
+        </trim>
+    </select>
+    
+    
+	<insert id="saveOne" parameterType="net.liuzd.spring.boot.v2.entity.User" useGeneratedKeys="true" keyProperty="id">
+	   INSERT INTO user(name, age, status,email, deleted,create_time,modify_time) VALUES
+            (#{name},#{age},#{status},#{email},#{deleted},#{createTime},#{modifyTime})
+	</insert>
+
+    
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO user(name, age, status,email, deleted,create_time,modify_time) VALUES
+        <foreach collection="list" item="user" index="index" separator=",">
+            (#{user.name},#{user.age},#{user.status},#{user.email},#{user.deleted},#{user.createTime},#{user.modifyTime})
+        </foreach>
+	</insert>
+
+</mapper>

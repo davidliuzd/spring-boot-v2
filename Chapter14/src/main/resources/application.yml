@@ -1,0 +1,34 @@
+# DataSource Config
+spring:
+  profiles:
+      # 默认使用开发环境
+      active: dev      
+
+resources:
+    #应用名称
+    appname: spring-boot-example
+    #日志打印的基础扫描包
+    basepackage: net.liuzd.spring.boot.v2
+   
+# Logger Config
+logging:
+  level:
+    net.liuzd.spring.boot.v2: debug
+# MyBatis-Plus 配置
+mybatis-plus:
+  # 扫描 mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: net.liuzd.spring.boot.v2.entity
+  type-enums-package: net.liuzd.spring.boot.v2.entity.enums
+  global-config:
+    id-type: 0  # 0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    db-column-underline: false
+    refresh-mapper: true
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  configuration:
+    map-underscore-to-camel-case: true
+    #cache-enabled: true #配置的缓存的全局开关
+    #lazyLoadingEnabled: true #延时加载的开关
+    #multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
