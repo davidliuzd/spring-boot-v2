@@ -1,0 +1,55 @@
+#
+spring:
+  profiles:
+      # 默认使用开发环境
+      active: dev       
+  mvc:
+        static-path-pattern: /static/**      
+        view:
+            prefix: /templates/
+            suffix: .ftl
+  freemarker:
+        cache: false
+        request-context-attribute: request
+        settings:
+           number_format: 0.##
+      
+ # Logger Config     
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    net.liuzd.spring.boot.v2: debug
+  path: d:/logs
+
+resources:
+    #应用名称
+    appname: spring-boot-example
+    #日志打印的基础扫描包
+    basepackage: net.liuzd.spring.boot.v2  
+
+
+# MyBatis 配置
+mybatis:
+    # mapper.xml包地址
+    mapper-locations: classpath:mapper/*.xml
+    # pojo生成包地址
+    type-aliases-package: net.liuzd.spring.boot.v2.entity
+    mapper-scan-package: net.liuzd.spring.boot.v2.mapper
+    config-location: classpath:/mybatis-config.xml  
+    
+ #mapper.mappers
+ 
+mapper:
+    mappers:
+    - tk.mybatis.mapper.common.MySqlMapper
+    not-empty: false
+    identity: MYSQL
+
+#pagehelper分页插件 
+pagehelper:
+    # 数据库的方言
+    helperDialect: mysql
+    # 启用合理化，如果pageNum < 1会查询第一页，如果pageNum > pages会查询最后一页
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql   
