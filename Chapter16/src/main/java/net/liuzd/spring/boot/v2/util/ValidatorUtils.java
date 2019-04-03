@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.common;
+package net.liuzd.spring.boot.v2.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import javax.validation.groups.Default;
 /**
  * 工具类
  */
-public class MyValidatorUtils {
+public class ValidatorUtils {
 
     /**
      * 用户名

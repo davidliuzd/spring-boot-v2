@@ -16,3 +16,24 @@ resources:
     appname: spring-boot-example
     #日志打印的基础扫描包
     basepackage: net.liuzd.spring.boot.v2  
+
+ ## mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: net.liuzd.spring.boot.v2.entity
+  ## mapper-scan-package: net.liuzd.spring.boot.v2.mapper
+  type-handlers-package: net.liuzd.spring.boot.v2.entity.enums
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: net.liuzd.spring.boot.v2.config.enums.EnumTypeHandler
+    map-underscore-to-camel-case: true
+
+
+#pagehelper分页插件 
+pagehelper:
+    # 数据库的方言
+    helperDialect: mysql
+    # 启用合理化，如果pageNum < 1会查询第一页，如果pageNum > pages会查询最后一页
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

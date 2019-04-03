@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.web;
+package net.liuzd.spring.boot.v2.web.controller;
 
 import java.util.Set;
 
@@ -43,11 +43,11 @@ public class ValidationController {
     public void test2() {
         User user = new User();
         user.setName("Spring Boot");
-        user.setAge(18);
+      /*  user.setAge(18);
         user.setBirthday("1990-11-23");
         user.setEmail("davidliuzd@sina.com");
         user.setIsFalse(false);
-        user.setMobile("13745636836");
+        user.setMobile("13745636836");*/
         Set<ConstraintViolation<User>> violationSet = validator.validate(user);
         for (ConstraintViolation<User> model : violationSet) {
             System.out.println(model.getMessage());

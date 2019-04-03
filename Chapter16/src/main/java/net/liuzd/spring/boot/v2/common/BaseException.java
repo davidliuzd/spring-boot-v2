@@ -1,4 +1,5 @@
 package net.liuzd.spring.boot.v2.common;
+
 @SuppressWarnings("serial")
 public class BaseException extends RuntimeException {
  

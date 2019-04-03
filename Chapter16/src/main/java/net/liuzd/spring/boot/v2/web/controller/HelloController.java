@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.web;
+package net.liuzd.spring.boot.v2.web.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

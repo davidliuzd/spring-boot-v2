@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.liuzd.spring.boot.v2.mapper.UserMapper">
+
+<resultMap type="net.liuzd.spring.boot.v2.entity.User" id="userResultMap" />
+
+    <sql id="columns">
+          `id`,
+		  `name`,
+		  `age`,
+		  `email`,
+		  `status`,
+		  `create_time`,
+		  `modify_time`,
+		  `version`,
+		  `mark`
+    </sql>
+
+
+    <insert id="insert"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user`
+        (
+             `NAME`,
+             `age`,
+             `email`,
+             `status`,
+             `create_time`,
+             `modify_time`,
+             `version`,
+             `mark`
+         )
+        VALUES
+        (       
+           #{name},
+           #{age},
+           #{email},
+           #{status},            
+            now(),
+            now(),
+           #{version},
+           #{mark}
+        )
+    </insert>
+
+    <update id="update" >
+        UPDATE `user`
+        SET
+        <trim suffixOverrides=",">
+            <if test="name != null and name!=''">
+                `name` = #{name},
+            </if>
+            <if test="age != null">
+                `age` = #{age},
+            </if>          
+            <if test="email != null and email''">
+                `email` = #{email},
+            </if>
+            <if test="status != null ">
+                `status` = #{status},
+            </if>            
+            <if test="version != null">
+                `version` = #{version},
+            </if>
+             <if test="mark != null">
+                `mark` = #{mark},
+            </if>           
+             `modify_time`=now()
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+            `id` = #{id}
+        </trim>
+    </update>
+
+    <select id="query" resultMap="userResultMap">
+        select
+        	<include refid="columns" />
+        from  `user`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="name != null and name!=''">
+                `name` = #{name} and
+            </if>
+            <if test="age != null">
+                `age` = #{age} and
+            </if>  
+            <if test="status != null">
+                `status` = #{status} and
+            </if>            
+            <if test="mark != null">
+                `mark` = #{mark} and
+            </if>            
+        </trim>
+    </select>    
+    
+    <select id="findById" parameterType="java.lang.Long" resultMap="userResultMap">
+        SELECT
+         	<include refid="columns" />
+        FROM  `user`
+        WHERE id = #{id}
+    </select>
+
+    <update id="deleteById" parameterType="java.lang.Long">
+        UPDATE `user` SET `mark` =  0  WHERE id = #{id}
+    </update>	
+
+</mapper>
