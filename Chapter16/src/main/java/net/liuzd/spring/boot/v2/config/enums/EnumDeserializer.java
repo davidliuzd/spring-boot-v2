@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import net.liuzd.spring.boot.v2.common.Enumerable;
-import net.liuzd.spring.boot.v2.util.EnumUtil;
+import net.liuzd.spring.boot.v2.util.EnumUtils;
 
 public class EnumDeserializer<E extends Enumerable> extends StdDeserializer<E> {
 
@@ -22,7 +22,7 @@ public class EnumDeserializer<E extends Enumerable> extends StdDeserializer<E> {
 
     @Override
     public E deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return EnumUtil.of(this.enumType, jsonParser.getIntValue());
+        return EnumUtils.of(this.enumType, jsonParser.getIntValue());
     }
 
 }

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.node.IntNode;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import net.liuzd.spring.boot.v2.common.Enumerable;
-import net.liuzd.spring.boot.v2.util.EnumUtil;
+import net.liuzd.spring.boot.v2.util.EnumUtils;
 
 /**
  * @author shiyajian
@@ -58,7 +58,7 @@ public class EnumModule extends SimpleModule {
             public E deserialize(JsonParser parser, DeserializationContext context) throws IOException {
                 // 前台如果传递只传value
                 if (parser.getCurrentToken().isNumeric()) {
-                    return EnumUtil.of(this.enumType, parser.getIntValue());
+                    return EnumUtils.of(this.enumType, parser.getIntValue());
 
                 }
                 // 前台以对象形式传递
@@ -67,7 +67,7 @@ public class EnumModule extends SimpleModule {
                     throw new IllegalArgumentException(" enum value not numeric type");
                 }
                 IntNode intNode = (IntNode) node;
-                return EnumUtil.of(this.enumType, intNode.intValue());
+                return EnumUtils.of(this.enumType, intNode.intValue());
 
             }
         }

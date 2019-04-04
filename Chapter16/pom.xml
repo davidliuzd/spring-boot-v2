@@ -19,6 +19,7 @@
 		<jackson.version>2.9.0</jackson.version>
 		<pagehelper.version>1.2.10</pagehelper.version>
 		<jackson-datatype-jsr.version>2.9.8</jackson-datatype-jsr.version>
+		
 	</properties>
 
 	<!-- Inherit defaults from Spring Boot -->
@@ -131,6 +132,24 @@
                     <groupId>com.google.code.findbugs</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <!-- <version>4.5.8</version> -->
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.3</version>
+        </dependency>
+        
+         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
         </dependency>
 
 	</dependencies>

@@ -13,6 +13,9 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class JSONUtils {
 
     public static final String       DEFAULT_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";

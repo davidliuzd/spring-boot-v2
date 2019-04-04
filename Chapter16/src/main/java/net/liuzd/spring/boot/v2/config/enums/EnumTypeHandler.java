@@ -11,7 +11,7 @@ import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
 import net.liuzd.spring.boot.v2.common.Enumerable;
-import net.liuzd.spring.boot.v2.util.EnumUtil;
+import net.liuzd.spring.boot.v2.util.EnumUtils;
 
 public class EnumTypeHandler<E extends Enumerable> extends BaseTypeHandler<E> {
 
@@ -32,19 +32,19 @@ public class EnumTypeHandler<E extends Enumerable> extends BaseTypeHandler<E> {
     @Override
     public E getNullableResult(ResultSet rs, String columnName) throws SQLException {
         int value = rs.getInt(columnName);
-        return rs.wasNull() ? null : EnumUtil.of(this.enumType, value);
+        return rs.wasNull() ? null : EnumUtils.of(this.enumType, value);
     }
 
     @Override
     public E getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         int value = rs.getInt(columnIndex);
-        return rs.wasNull() ? null : EnumUtil.of(this.enumType, value);
+        return rs.wasNull() ? null : EnumUtils.of(this.enumType, value);
     }
 
     @Override
     public E getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         int value = cs.getInt(columnIndex);
-        return cs.wasNull() ? null : EnumUtil.of(this.enumType, value);
+        return cs.wasNull() ? null : EnumUtils.of(this.enumType, value);
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 
 import net.liuzd.spring.boot.v2.common.Enumerable;
-import net.liuzd.spring.boot.v2.util.EnumUtil;
+import net.liuzd.spring.boot.v2.util.EnumUtils;
 
 @SuppressWarnings("rawtypes")
 public class EnumConverterFactory implements ConverterFactory<String, Enumerable> {
@@ -34,7 +34,7 @@ public class EnumConverterFactory implements ConverterFactory<String, Enumerable
 
             @Override
             public T convert(@Nonnull Integer value) {
-                return EnumUtil.of(this.enumType, value);
+                return EnumUtils.of(this.enumType, value);
             }
         }
     }

@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import net.liuzd.spring.boot.v2.common.Enumerable;
 
-public class EnumUtil {
+public class EnumUtils {
 
     @SuppressWarnings("rawtypes")
     public static <E extends Enumerable> E of(@Nonnull Class<E> classType, int value) {
