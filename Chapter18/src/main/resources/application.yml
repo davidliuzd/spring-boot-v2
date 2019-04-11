@@ -1,0 +1,25 @@
+#
+spring:
+  profiles:
+      # 默认使用开发环境
+      active: dev  
+  mvc:
+     view:
+        prefix: /WEB-INF/jsp/
+        suffix: .jsp
+      
+      
+ # Logger Config     
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    net.liuzd.spring.boot.v2: debug
+  path: d:/logs
+
+resources:
+    #应用名称
+    appname: spring-boot-example
+    #日志打印的基础扫描包
+    basepackage: net.liuzd.spring.boot.v2  
+
+ 
