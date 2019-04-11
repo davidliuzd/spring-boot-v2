@@ -1,0 +1,8 @@
+server:
+  port: 80
+  session-timeout: 60
+  context-path: #/liuzd/
+  undertow:
+    direct-buffers: true
+  
+
