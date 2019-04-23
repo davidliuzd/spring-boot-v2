@@ -1,0 +1,15 @@
+server:
+  port: 80
+  session-timeout: 60
+  tomcat:
+     uri-encoding: UTF-8
+     max-threads: 1000
+     # 解决全站https环境下，Spring MVC重定向到http的问题,https://aceofspades.top/u/ace/blogs/8
+     remote_ip_header: x-forwarded-for
+     protocol_header: x-forwarded-proto
+     #
+  context-path: #/liuzd/
+  undertow:
+    direct-buffers: true
+  
+
