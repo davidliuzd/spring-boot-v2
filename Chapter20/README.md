@@ -8,6 +8,8 @@
 ##### 4. [安装kibana，X-pack和elasticsearch插件的全过程](https://blog.51cto.com/chenx1242/2045569)
 ##### 5. [Spring Boot 學習筆記 8 : Elasticsearch](https://www.twblogs.net/a/5b7d58662b71770a43deb838)
 ##### 6. [Spring Data Elasticsearch学习笔记](https://aceofspades.top/u/ace/blogs/12)
+##### 7. [ConfigurationProperties介绍](https://elim.iteye.com/blog/2434028)
+##### 8. [ConfigurationProperties详解](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-relaxed-binding)
 
 #### Window安装ES环境，可参考[Chocolatey 在Window搭建一个开发环境](https://my.oschina.net/liuzidong/blog/3026912)
 

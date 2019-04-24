@@ -11,5 +11,88 @@ server:
   context-path: #/liuzd/
   undertow:
     direct-buffers: true
+    
+my-data:
+   #随机32位MD5字符串
+   secret: ${random.value}
+   #随机int数字
+   intNumber: ${random.int}
+   #随机long数字
+   longNumber: ${random.long}
+   #随便uuid
+   uuid: ${random.uuid}
+   #随机10以内的数字
+   lessTen: ${random.int(10)}
+   #随机1024~65536之内的数字
+   range: ${random.int[1024,65536]}
+   project-name: SpringBoot-ES示例
+   version: V1.0
+   # 普通List
+   spring-boot-funs:
+    - 纯洁的微笑-Spring Boot系列文章 
+    - 林祥纤-从零开始学Spring Boot 
+    - baeldung-Spring Boot教程（国外） 
+    - Mkyong-Spring Boot教程（国外） 
+    - liaokailin的专栏-Spring Boot实战 
+    - catoop的专栏-Spring Boot 学习 
+    - 方志朋-SpringBoot 
+    - 非官方教程 嘟嘟-Spring-Boot干货系列 
+    - 小柒-SpringBoot开发案例 
+    - 江南一点雨-关于Spring Boot 
+    - 天码营-Spring Boot 
+    - 猿天地-Spring Boot 
+    - 刘冬的博客-Spring Boot 
+    - 唐亚峰 Battcn-Spring Boot 
+    # List与对象
+   books:
+      -
+         id: ${random.int}
+         name: 《图灵的秘密:他的生平、思想及论文解读》
+         author: 图灵
+         money: ${random.int(100)}
+      -
+         id: ${random.int}
+         name: 《TCP/IP详解 卷1：协议》
+         author: TCP/IP
+         money: ${random.int(100)} 
+   # 普通Map
+   userNameMap:
+       david: 大卫
+       jack: 杰培
+   # Map + 对象
+   userMap:
+        david:
+           name: 大卫
+           age: ${random.int(150)}
+           email: davidliuzd@sina.com
+        jack:
+           name: 杰培
+           age: ${random.int(150)}
+           email: davidliuzd@sina.com
+   # Map + List<对象>
+   userBookMap:
+           david:
+                 -
+                  id: ${random.int}
+                  name: 《图灵的秘密:他的生平、思想及论文解读》
+                  author: 图灵
+                  money: ${random.int(100)}
+                 -
+                    id: ${random.int}
+                    name: 《TCP/IP详解 卷1：协议》
+                    author: TCP/IP
+                    money: ${random.int(100)}                 
+           jack:
+                 -
+                  id: ${random.int}
+                  name: 《图灵的秘密:他的生平、思想及论文解读》
+                  author: 图灵
+                  money: ${random.int(100)}
+                 -
+                    id: ${random.int}
+                    name: 《TCP/IP详解 卷1：协议》
+                    author: TCP/IP
+                    money: ${random.int(100)}                 
+           
   
 
