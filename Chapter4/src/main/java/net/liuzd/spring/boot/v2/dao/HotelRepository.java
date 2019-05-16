@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.service;
+package net.liuzd.spring.boot.v2.dao;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import net.liuzd.spring.boot.v2.domain.City;
 import net.liuzd.spring.boot.v2.domain.Hotel;
-import net.liuzd.spring.boot.v2.domain.HotelSummary;
-import net.liuzd.spring.boot.v2.domain.RatingCount;
+import net.liuzd.spring.boot.v2.service.HotelSummary;
+import net.liuzd.spring.boot.v2.service.RatingCount;
 
-interface HotelRepository extends JpaRepository<Hotel, Long> {
+public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
 	Hotel findByCityAndName(City city, String name);
 

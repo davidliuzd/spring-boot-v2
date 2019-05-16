@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.service;
+package net.liuzd.spring.boot.v2.service.impl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -8,8 +8,11 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import net.liuzd.spring.boot.v2.domain.City;
-import net.liuzd.spring.boot.v2.domain.CitySearchCriteria;
-import net.liuzd.spring.boot.v2.domain.HotelSummary;
+import net.liuzd.spring.boot.v2.domain.dto.CitySearchCriteria;
+import net.liuzd.spring.boot.v2.service.CityService;
+import net.liuzd.spring.boot.v2.service.HotelSummary;
+import net.liuzd.spring.boot.v2.dao.CityRepository;
+import net.liuzd.spring.boot.v2.dao.HotelRepository;
 
 @Component("cityService")
 @Transactional

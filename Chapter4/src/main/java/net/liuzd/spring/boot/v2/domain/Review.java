@@ -17,6 +17,10 @@ import javax.persistence.TemporalType;
 
 import org.springframework.util.Assert;
 
+import net.liuzd.spring.boot.v2.domain.dto.ReviewDetails;
+import net.liuzd.spring.boot.v2.domain.enums.Rating;
+import net.liuzd.spring.boot.v2.domain.enums.TripType;
+
 @Entity
 @Table(indexes = {@Index(name = "idx_hotel_id",  columnList="hotel_id", unique = true)})
 public class Review implements Serializable {

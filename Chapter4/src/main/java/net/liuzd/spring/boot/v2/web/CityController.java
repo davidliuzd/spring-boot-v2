@@ -13,11 +13,11 @@ public class CityController {
 	@Autowired
 	private CityService cityService;
 
-	@GetMapping("/")
+	@GetMapping("/city")
 	@ResponseBody
 	@Transactional(readOnly = true)
 	public String helloWorld() {
-		return this.cityService.getCity("Bath", "UK").getName();
+		return this.cityService.getCity("name0", "country0").getName();
 	}
 
 }

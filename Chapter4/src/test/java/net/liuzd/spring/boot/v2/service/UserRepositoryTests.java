@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2;
+package net.liuzd.spring.boot.v2.service;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import net.liuzd.spring.boot.v2.dao.UserRepository;
 import net.liuzd.spring.boot.v2.domain.User;
-import net.liuzd.spring.boot.v2.service.UserRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ApplicationTests {
+public class UserRepositoryTests {
 
     @Autowired
     private UserRepository userRepository;

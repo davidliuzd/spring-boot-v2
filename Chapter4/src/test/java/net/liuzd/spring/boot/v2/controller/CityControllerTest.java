@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2;
+package net.liuzd.spring.boot.v2.controller;
 
 import java.lang.management.ManagementFactory;
 
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(properties = { "spring.jmx.enabled:true",
 		"spring.datasource.jmx-enabled:true" })
 @ActiveProfiles("scratch")
-public class DataJpaApplicationTests {
+public class CityControllerTest {
 
 	@Autowired
 	private WebApplicationContext context;
@@ -40,8 +40,8 @@ public class DataJpaApplicationTests {
 	@Test
 	public void testHome() throws Exception {
 
-		this.mvc.perform(get("/")).andExpect(status().isOk())
-				.andExpect(content().string("Bath"));
+		this.mvc.perform(get("/city")).andExpect(status().isOk())
+				.andExpect(content().string("name0"));
 	}
 
 	@Test

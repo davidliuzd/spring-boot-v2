@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.service;
+package net.liuzd.spring.boot.v2.dao;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import net.liuzd.spring.boot.v2.domain.City;
 
-interface CityRepository extends JpaRepository<City, Long> {
+public interface CityRepository extends JpaRepository<City, Long> {
 
     Page<City> findAll(Pageable pageable);
 

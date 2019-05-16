@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.domain;
+package net.liuzd.spring.boot.v2.domain.dto;
 import java.io.Serializable;
 
 import org.springframework.util.Assert;

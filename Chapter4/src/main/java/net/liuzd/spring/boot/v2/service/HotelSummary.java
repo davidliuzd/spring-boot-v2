@@ -1,4 +1,6 @@
-package net.liuzd.spring.boot.v2.domain;
+package net.liuzd.spring.boot.v2.service;
+
+import net.liuzd.spring.boot.v2.domain.City;
 
 public interface HotelSummary {
 

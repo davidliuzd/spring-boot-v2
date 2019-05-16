@@ -4,8 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import net.liuzd.spring.boot.v2.domain.City;
-import net.liuzd.spring.boot.v2.domain.CitySearchCriteria;
-import net.liuzd.spring.boot.v2.domain.HotelSummary;
+import net.liuzd.spring.boot.v2.domain.dto.CitySearchCriteria;
 
 public interface CityService {
 

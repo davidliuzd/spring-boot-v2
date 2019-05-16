@@ -1,6 +1,9 @@
-package net.liuzd.spring.boot.v2.domain;
+package net.liuzd.spring.boot.v2.domain.dto;
 import java.io.Serializable;
 import java.util.Date;
+
+import net.liuzd.spring.boot.v2.domain.enums.Rating;
+import net.liuzd.spring.boot.v2.domain.enums.TripType;
 
 public class ReviewDetails implements Serializable {
 
