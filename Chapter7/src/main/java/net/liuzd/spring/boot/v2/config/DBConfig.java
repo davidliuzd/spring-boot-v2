@@ -27,7 +27,7 @@ public class DBConfig {
         dataSource.setInitialPoolSize(10);
         dataSource.setMaxIdleTime(300);
         dataSource.setAcquireIncrement(5);
-        dataSource.setIdleConnectionTestPeriod(60);
+        dataSource.setIdleConnectionTestPeriod(60);        
         return dataSource;
     }
 

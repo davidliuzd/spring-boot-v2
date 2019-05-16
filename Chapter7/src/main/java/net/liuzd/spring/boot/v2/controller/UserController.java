@@ -18,9 +18,7 @@ import net.liuzd.spring.boot.v2.config.PropertiesConfig;
 import net.liuzd.spring.boot.v2.service.UserService;
 import net.liuzd.spring.boot.v2.util.CommonUtil;
 
-/**
- * @ClassName UserController
- */
+
 @Controller
 @RequestMapping(value = "/users")
 public class UserController {
@@ -28,18 +26,16 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService         userService;
+    private UserService         userService;    
 
     @Autowired
     private PropertiesConfig    propertiesConfig;
 
-    /***
-     * @param request
-     * @return
-     */
+   
     @RequestMapping(value = "map", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ResponseEntity<Object> list(HttpServletRequest request) {
+        logger.debug("map...");
         Map<String, Object> map = CommonUtil.getParameterMap(request);
         return new ResponseEntity<>(userService.getList(map), HttpStatus.OK);
     }
@@ -47,7 +43,8 @@ public class UserController {
     @RequestMapping(value = "get", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ResponseEntity<Object> get(HttpServletRequest request) {
-        return new ResponseEntity<>(propertiesConfig.getProfilesActive(), HttpStatus.OK);
+        logger.debug("get...");
+        return new ResponseEntity<>(propertiesConfig.getAll(), HttpStatus.OK);
     }
 
 }

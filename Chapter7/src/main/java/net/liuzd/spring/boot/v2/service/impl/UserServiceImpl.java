@@ -9,11 +9,7 @@ import net.liuzd.spring.boot.v2.domain.User;
 import net.liuzd.spring.boot.v2.mapper.UserMapper;
 import net.liuzd.spring.boot.v2.service.UserService;
 
-/**
- * @ClassName UserServiceImpl
- * @author abel
- * @date 2016年11月10日
- */
+
 @Service
 public class UserServiceImpl implements UserService {
 
