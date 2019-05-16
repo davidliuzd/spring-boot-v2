@@ -1,4 +1,4 @@
-###  Data JPA示例
+###  Data JDBC示例
 
 #### 1. [SpringBootApplication注解分析](https://www.jianshu.com/p/4e1cab2d8431)
 ```
