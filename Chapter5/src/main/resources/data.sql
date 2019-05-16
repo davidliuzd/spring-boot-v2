@@ -1,0 +1,2 @@
+insert into city (name, state, country,map) values ('San Francisco', 'CA', 'US','map0');
+insert into hotel(city_id, name, address, zip) values (1, 'Conrad Treasury Place', 'William & George Streets', '4001')
