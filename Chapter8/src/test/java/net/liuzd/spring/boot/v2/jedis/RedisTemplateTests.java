@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2;
+package net.liuzd.spring.boot.v2.jedis;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import net.liuzd.spring.boot.v2.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ApplicationSpringBootTests {
+public class RedisTemplateTests {
 
     @Autowired
     private StringRedisTemplate            template;

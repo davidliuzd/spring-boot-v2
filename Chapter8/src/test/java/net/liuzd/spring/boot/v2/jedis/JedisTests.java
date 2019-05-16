@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2;
+package net.liuzd.spring.boot.v2.jedis;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,13 +23,13 @@ import redis.clients.jedis.Jedis;
  * @After：释放资源 对于每一个测试方法都要执行一次（注意与AfterClass区别，后者是对于所有方法执行一次）
  * @Test：测试方法，在这里可以测试期望异常和超时时间
  * @Test(expected=ArithmeticException.class)检查被测方法是否抛出ArithmeticException异常
- * @Ignore：忽略的测试方法
+ * ：忽略的测试方法
  * @BeforeClass：针对所有测试，只执行一次，且必须为static void
  * @AfterClass：针对所有测试，只执行一次，且必须为static void 一个JUnit4的单元测试用例执行顺序为：
  * @BeforeClass -> @Before -> @Test -> @After -> @AfterClass; 每一个测试方法的调用顺序为：
  * @Before -> @Test -> @After;
  */
-public class ApplicationRedisTests {
+public class JedisTests {
 
     private static Jedis jedis;
 
@@ -51,8 +50,7 @@ public class ApplicationRedisTests {
         System.out.println("关闭本地的 Redis 服务成功！");
     }
 
-    @Test
-    @Ignore
+    @Test    
     public void testStr() {
         System.out.println("---------------testStr--------------");
         // 设置 redis 字符串数据
@@ -66,8 +64,7 @@ public class ApplicationRedisTests {
         Assert.isTrue(url.equals(val), "not eq");
     }
 
-    @Test
-    @Ignore
+    @Test    
     public void testList() {
         System.out.println("---------------testList--------------");
         // 存储数据到列表中
@@ -84,8 +81,7 @@ public class ApplicationRedisTests {
         }
     }
 
-    @Test
-    @Ignore
+    @Test    
     public void testList2() {
         System.out.println("---------------testList2--------------");
         // 开始前，先移除所有的内容
@@ -109,8 +105,7 @@ public class ApplicationRedisTests {
         //
     }
 
-    @Test
-    @Ignore
+    @Test    
     public void testMap() {
         System.out.println("---------------testMap--------------");
         // -----添加数据----------
@@ -142,8 +137,7 @@ public class ApplicationRedisTests {
         }
     }
 
-    @Test
-    @Ignore
+    @Test    
     public void testSet() {
         System.out.println("---------------testSet--------------");
         // 删除map中的某个键值
@@ -161,8 +155,8 @@ public class ApplicationRedisTests {
         // 移除noname
         jedis.srem(key, "who");
         System.out.println("smembers>" + jedis.smembers(key));// 获取所有加入的value
-        System.out.println("sismember>" + jedis.sismember(key, "who"));// 判断
-                                                                       // who是否是user集合的元素
+        System.out.println("sismember>" + jedis.sismember(key, "who"));// 判断who是否是user集合的元素
+         // 随机返回值
         System.out.println("srandmember>" + jedis.srandmember(key));
         System.out.println("scard>" + jedis.scard(key));// 返回集合的元素个数
     }
