@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2;
+package net.liuzd.spring.boot.v2.customer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,14 +13,14 @@ import net.liuzd.spring.boot.v2.repository.CustomerRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 //@AutoConfigureTestDatabase
-public class CustomerRepositoryIntegrationTests {
+public class CustomerRepositoryTest {
 
 	@Autowired
 	private CustomerRepository repository;
 
 	@Test
 	public void findAllCustomers() {
-		assertThat(this.repository.findAll()).hasSize(2);
+		assertThat(this.repository.findAll()).hasSize(5);
 	}
 
 	@Test

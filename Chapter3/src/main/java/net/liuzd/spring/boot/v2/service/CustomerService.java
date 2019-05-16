@@ -1,4 +1,4 @@
-package net.liuzd.spring.boot.v2.repository;
+package net.liuzd.spring.boot.v2.service;
 
 import java.time.LocalDateTime;
 

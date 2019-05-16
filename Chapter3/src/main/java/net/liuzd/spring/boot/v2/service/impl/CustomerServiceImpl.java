@@ -1,10 +1,12 @@
-package net.liuzd.spring.boot.v2.repository;
+package net.liuzd.spring.boot.v2.service.impl;
 
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import net.liuzd.spring.boot.v2.service.CustomerService;
 
 
 @Service

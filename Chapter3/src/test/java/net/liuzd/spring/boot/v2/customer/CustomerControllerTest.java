@@ -1,4 +1,5 @@
-package net.liuzd.spring.boot.v2;
+package net.liuzd.spring.boot.v2.customer;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -14,29 +15,24 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-/**
- * Integration tests for {@link SampleDataJdbcApplication}.
- *
- * @author Andy Wilkinson
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerControllerTests {
+public class CustomerControllerTest {
 
-	@Autowired
-	private WebApplicationContext context;
+    @Autowired
+    private WebApplicationContext context;
 
-	private MockMvc mvc;
+    private MockMvc               mvc;
 
-	@Before
-	public void setUp() {
-		this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
-	}
+    @Before
+    public void setUp() {
+        this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+    }
 
-	@Test
-	public void testCustomers() throws Exception {
-		this.mvc.perform(get("/").param("name", "Joan")).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Joan")));
-	}
+    @Test
+    public void testCustomers() throws Exception {
+        this.mvc.perform(get("/").param("name", "Joan")).andExpect(status().isOk()).andExpect(content().string(
+                containsString("Joan")));
+    }
 
 }

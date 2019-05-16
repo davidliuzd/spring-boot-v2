@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.liuzd.spring.boot.v2.domain.Customer;
 import net.liuzd.spring.boot.v2.repository.CustomerRepository;
+import net.liuzd.spring.boot.v2.service.CustomerService;
 
 @Controller
 public class CustomerController {
 
 	private final CustomerRepository customerRepository;
 
-	public CustomerController(CustomerRepository customerRepository) {
-		this.customerRepository = customerRepository;
+	public CustomerController(CustomerRepository customerRepository,CustomerService customerService) {
+	    //ComponentScan自动注入对象
+		this.customerRepository = customerRepository;		
 	}
 
-	@GetMapping("/")
+	@GetMapping(value= {"/customer","/"})
 	@ResponseBody
 	@Transactional(readOnly = true)
 	public List<Customer> customers(@RequestParam String name) {
