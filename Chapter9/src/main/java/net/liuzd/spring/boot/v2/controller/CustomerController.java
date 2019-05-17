@@ -19,16 +19,6 @@ import net.liuzd.spring.boot.v2.repository.CustomerRepository;
 
 @Controller
 @RequestMapping("/api")
-/**
- * 如对象前面加上：@RequestBody，会报以下错误
- * {
-    "timestamp": "2018-12-11T09:29:36.288+0000",
-    "status": 415,
-    "error": "Unsupported Media Type",
-    "message": "Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported",
-    "path": "/api/customers/create"
-}
- * */
 public class CustomerController {
 
     @Autowired

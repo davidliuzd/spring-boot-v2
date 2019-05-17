@@ -34,8 +34,8 @@ public class ApplicationTests {
 
         // String name, int age, boolean active, String firstName, String
         // lastName
-        this.customerRepository.save(new Customer("刘自东", 30, true, "刘", "自东"));
-        this.customerRepository.save(new Customer("刘远", 18, false, "刘", "远"));
+        this.customerRepository.save(new Customer("张三", 30, true, "张", "三"));
+        this.customerRepository.save(new Customer("李四", 18, false, "李", "四"));
 
         // fetch all customers
         System.out.println("Customers found with findAll():");
