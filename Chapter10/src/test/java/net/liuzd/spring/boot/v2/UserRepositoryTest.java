@@ -2,6 +2,7 @@ package net.liuzd.spring.boot.v2;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,18 +21,22 @@ import net.liuzd.spring.boot.v2.repository.UserRepository;
 @SpringBootTest
 public class UserRepositoryTest {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger   logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private UserRepository userRepository;
 
+    @Before
+    public void before() {
+       // userRepository.deleteAll();
+    }
 
     @Test
     public void testAdd() throws Exception {
         // 创建多个User，并验证User总数
         userRepository.save(new User(1L, "felix", 22));
         userRepository.save(new User(2L, "tim", 23));
-        userRepository.save(new User(3L, "cc", 23));    
+        userRepository.save(new User(3L, "cc", 23));
         userRepository.save(new User(4L, "pyh", 22));
         userRepository.save(new User(5L, "simba", 28));
         userRepository.save(new User(6L, "felix2", 10));
@@ -46,16 +51,8 @@ public class UserRepositoryTest {
         userRepository.save(new User(15L, "felix10", 100));
         userRepository.save(new User(16L, "", 50));
         userRepository.save(new User(17L, null, 50));
-    }
-    
-    @Test
-    public void testDel() throws Exception {
-        // 删除一个User，再验证User总数
-        User u = userRepository.findById(1L).orElse(null);
-        this.logger.info(u.toString());
-        userRepository.delete(u);
-    }
-    
+    }   
+
     @Test
     public void testFindMore() throws Exception {
 
@@ -77,9 +74,9 @@ public class UserRepositoryTest {
         this.logger.info(u8.toString());
 
     }
-    
+
     @Test
-    public void test3() throws Exception {
+    public void testPage() throws Exception {
 
         Pageable pageable = PageRequest.of(0, 10);
         Page<User> u1 = userRepository.findByNameAndAgeRange("felix", 50, pageable);
@@ -92,6 +89,13 @@ public class UserRepositoryTest {
         this.logger.info(u3.toString());
         u3.getContent().stream().forEach(n -> System.out.println(n.toString()));
     }
-
+    
+    @Test
+    public void testDel() throws Exception {
+        // 删除一个User，再验证User总数
+        User u = userRepository.findById(1L).orElse(null);
+        this.logger.info(u.toString());
+        userRepository.delete(u);
+    }
 
 }

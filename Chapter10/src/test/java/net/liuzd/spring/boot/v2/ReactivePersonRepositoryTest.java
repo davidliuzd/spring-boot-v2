@@ -1,5 +1,9 @@
 package net.liuzd.spring.boot.v2;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -22,14 +26,24 @@ public class ReactivePersonRepositoryTest {
     @Autowired
     private ReactivePersonRepository reactivePersonRepository;
 
+    @Before
+    public void before() {
+        reactivePersonRepository.deleteAll();
+    }
+
     @Test
     public void testAdd() throws Exception {
         // ReactiveMongoTemplate t = null;
         // 创建多个User，并验证User总数
         int size = 20;
-        for (int i = 0; i < size; i++) {
-            reactivePersonRepository.save(new Person("liu" + i, "felix" + i, 22 + i));
+        List<Person> pps = new ArrayList<>();
+        for (int i = 1; i <= size; i++) {
+            Person p = new Person("liu" + i, "felix" + i, 22 + i);
+            pps.add(p);
         }
+        Flux<Person> f = reactivePersonRepository.saveAll(pps);
+        this.logger.info(f.blockFirst().toString());
+        // 必须加上：Flux<Person> f = 才会插入到Mongo
     }
 
     @Test

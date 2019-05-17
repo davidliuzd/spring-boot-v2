@@ -1,5 +1,8 @@
 package net.liuzd.spring.boot.v2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -28,9 +31,14 @@ public class RxJava2PersonRepositoryTest {
     public void testAdd() throws Exception {
         // 创建多个User，并验证User总数
         int size = 20;
-        for (int i = 0; i < size; i++) {
-            rxJava2PersonRepository.save(new Person("liu" + i, "felix" + i, 22 + i));
+        List<Person> pps = new ArrayList<>();
+        for (int i = 1; i <= size; i++) {
+            Person p = new Person("liu" + i, "felix" + i, 22 + i);
+            pps.add(p);
         }
+        //
+        Flowable<Person> f = rxJava2PersonRepository.saveAll(pps);
+        this.logger.info(f.blockingFirst().toString());
     }
 
     @Test

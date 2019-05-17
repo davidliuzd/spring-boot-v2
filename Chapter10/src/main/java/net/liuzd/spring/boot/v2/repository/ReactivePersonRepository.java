@@ -12,7 +12,8 @@ import reactor.core.publisher.Mono;
  *
  * @author Mark Paluch
  */
-public interface ReactivePersonRepository extends ReactiveCrudRepository<Person, String> {
+public interface ReactivePersonRepository extends ReactiveCrudRepository<Person, String>  {
+    
 
 	/**
 	 * Derived query selecting by {@code lastname}.

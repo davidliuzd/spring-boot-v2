@@ -8,12 +8,7 @@ import io.reactivex.Maybe;
 import io.reactivex.Single;
 import net.liuzd.spring.boot.v2.domain.Person;
 
-/**
- * Repository interface to manage {@link Person} instances.
- *
- * @author Mark Paluch
- * @author Christoph Strobl
- */
+
 public interface RxJava2PersonRepository extends RxJava2CrudRepository<Person, String> {
 
 	/**

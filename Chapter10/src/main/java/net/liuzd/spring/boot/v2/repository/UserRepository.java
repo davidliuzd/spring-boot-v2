@@ -3,13 +3,13 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import net.liuzd.spring.boot.v2.domain.User;
 
 //Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends MongoRepository<User, Long> {
 
     /**
      * Like（模糊查询）
