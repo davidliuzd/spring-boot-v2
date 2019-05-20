@@ -7,11 +7,7 @@ import org.springframework.stereotype.Service;
 
 import net.liuzd.spring.boot.v2.mapper.SysPermissionMapper;
 
-/**
- * @Description
- * @Author sgl
- * @Date 2018-06-11 17:10
- */
+
 @Service
 public class SysPermissionService {
     @Autowired

@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import net.liuzd.spring.boot.v2.entity.SysUser;
+
 @Controller
 public class HomeController {
     
     @RequestMapping({"/","/index"})
-    public String index(){
+    public String index(Model model){
+        SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
+        model.addAttribute("userName", sysUser.getFullName());
         return"/index";
     }
     
@@ -51,9 +55,9 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/403")
-    public String unauthorizedRole(){
-        System.out.println("------没有权限-------");
+    @RequestMapping("/testError")
+    public String testError(){
+       System.out.println(2/0);
         return "403";
     }
     

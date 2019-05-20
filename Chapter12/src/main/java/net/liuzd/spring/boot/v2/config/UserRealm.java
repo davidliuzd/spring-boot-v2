@@ -20,11 +20,7 @@ import net.liuzd.spring.boot.v2.entity.SysUser;
 import net.liuzd.spring.boot.v2.service.SysPermissionService;
 import net.liuzd.spring.boot.v2.service.SysUserService;
 
-/**
- * @Description
- * @Author sgl
- * @Date 2018-06-11 17:07
- */
+
 public class UserRealm extends AuthorizingRealm {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRealm.class);
     @Autowired
@@ -41,11 +37,12 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        //访问URL时检查
         SysUser sysUser = (SysUser) principals.getPrimaryPrincipal();
         List<String> sysPermissions = sysPermissionService.selectPermissionByUserId(sysUser.getUserId());
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addStringPermissions(sysPermissions);
-        LOGGER.info("doGetAuthorizationInfo");
+        LOGGER.info("2 》doGetAuthorizationInfo");
         return info;
     }
 
@@ -58,12 +55,13 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        //login检查
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         SysUser sysUser = sysUserService.findByUserName(token.getUsername());
         if (sysUser == null) {
             return null;
         }
-        LOGGER.info("doGetAuthenticationInfo");
+        LOGGER.info("1 》 doGetAuthenticationInfo");
         return new SimpleAuthenticationInfo(sysUser, sysUser.getPassword().toCharArray(), ByteSource.Util.bytes(sysUser.getSalt()), getName());
     }
 }

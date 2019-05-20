@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.liuzd.spring.boot.v2.mapper.SysUserMapper">
-	 <resultMap id="sysUserResultMap" type="net.liuzd.spring.boot.v2.entity.SysUser"/>
+	 <resultMap id="sysUserResultMap" type="net.liuzd.spring.boot.v2.entity.SysUser">
+	 	   <result property="userId" column="user_id"/>
+        	<result property="userName" column="user_name"/>	 
+        	<result property="fullName" column="full_name"/>
+        	<result property="password" column="password"/>	 
+        	<result property="salt" column="salt"/>	 
+	 </resultMap>
     <select id="findByUserName" parameterType="string" resultMap="sysUserResultMap">
         select * from sys_user where user_name=#{userName}
     </select>
