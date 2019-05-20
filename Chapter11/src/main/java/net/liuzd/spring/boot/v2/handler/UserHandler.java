@@ -26,10 +26,10 @@ public class UserHandler {
 
     public UserHandler() {
         la.increment();
-        User user = new User(la.longValue(), "刘自东", "123", 20);
+        User user = new User(la.longValue(), "刘志远", "123", 20);
         userMap.put(user.getId(), user);
         la.increment();
-        user = new User(la.longValue(), "刘自北", "456", 24);
+        user = new User(la.longValue(), "刘志立", "456", 24);
         userMap.put(user.getId(), user);
     }
 

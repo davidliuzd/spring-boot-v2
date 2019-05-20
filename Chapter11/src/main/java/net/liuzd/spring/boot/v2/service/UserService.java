@@ -15,7 +15,7 @@ public class UserService {
     private final Map<Long, User> data = new ConcurrentHashMap<>();
 
     public UserService() {
-        User user = new User(1L, "刘自北", "123", 20);
+        User user = new User(1L, "刘志希", "123", 20);
         data.put(user.getId(), user);
     }
 
