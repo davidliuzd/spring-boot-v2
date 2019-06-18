@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 @RestController
 public class HelloController {
 
-    @GetMapping("hello")
+    @GetMapping(value= {"","hello"})
     public String Hello() {
         return "Hello this is SpringWebFlux";
     }
