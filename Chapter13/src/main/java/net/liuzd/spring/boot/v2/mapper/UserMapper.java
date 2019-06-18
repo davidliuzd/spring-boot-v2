@@ -4,10 +4,7 @@ import net.liuzd.spring.boot.v2.config.MyBaseMapper;
 import net.liuzd.spring.boot.v2.entity.User;
 import net.liuzd.spring.boot.v2.model.UserPage;
 
-/**
- * @author hubin
- * @since 2018-08-11
- */
+
 public interface UserMapper extends MyBaseMapper<User> {
 
     /**

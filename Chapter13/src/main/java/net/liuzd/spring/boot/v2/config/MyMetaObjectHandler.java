@@ -11,7 +11,6 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 
 /**
  * 常用字段值填充器
- * @author nieqiurong 2018-08-10 22:59:23.
  */
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {

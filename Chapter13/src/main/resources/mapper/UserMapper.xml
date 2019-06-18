@@ -4,13 +4,15 @@
 
 	<select id="selectUserPage" resultType="net.liuzd.spring.boot.v2.entity.User">
         select 
-        	  id,
-			  name,
-			  age,
-			  email,
-			  create_time,
-			  modify_time,
-			  mark
+        	 `id`,
+			  `name`,
+			  `age`,
+			  `email`,
+			  `status`,
+			  `create_time`,
+			  `modify_time`,
+			  `version`,
+			  `mark`
         from user
         <trim prefix="where" prefixOverrides="AND">
             <if test="selectInt != null">
@@ -19,21 +21,21 @@
             <if test="selectStr != null">
                 AND name = #{selectStr}
             </if>
-            AND deleted = 0
+            AND mark = 0
         </trim>
     </select>
     
     
 	<insert id="saveOne" parameterType="net.liuzd.spring.boot.v2.entity.User" useGeneratedKeys="true" keyProperty="id">
-	   INSERT INTO user(name, age, status,email, deleted,create_time,modify_time) VALUES
-            (#{name},#{age},#{status},#{email},#{deleted},#{createTime},#{modifyTime})
+	   INSERT INTO user(name, age, status,email,version,create_time,modify_time,mark) VALUES
+            (#{name},#{age},#{status},#{email},#{version},#{createTime},#{modifyTime},#{mark})
 	</insert>
 
     
     <insert id="insertBatch" parameterType="java.util.List">
-        INSERT INTO user(name, age, status,email, deleted,create_time,modify_time) VALUES
+        INSERT INTO user(name, age, status,email,version,create_time,modify_time,mark) VALUES
         <foreach collection="list" item="user" index="index" separator=",">
-            (#{user.name},#{user.age},#{user.status},#{user.email},#{user.deleted},#{user.createTime},#{user.modifyTime})
+            (#{user.name},#{user.age},#{user.status},#{user.email},#{user.version},#{user.createTime},#{user.modifyTime},#{user.mark})
         </foreach>
 	</insert>
 

@@ -2,6 +2,7 @@ package net.liuzd.spring.boot.v2.mappper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -58,39 +59,52 @@ public class UserMapperTest {
         print(userIPage.getRecords());
     }
 
+    int size = 10001;
+
     @Test
     public void testInserts() {
         List<User> users = new ArrayList<>();
-        int size = 10000;
+        int bath = 200;
+        int counts = 0;
         for (int i = 0; i < size; i++) {
-            User user = new User();
-            user.setName("原来你也在这里" + i);
-            user.setAge(18 + i);
-            user.setEmail(i + "davidliuzd@sina.com");
-            user.setStatus(UserStatusEnum.NORMAL);
+            User user = getUser(i);
             users.add(user);
+            if (users.size() == bath) {
+                counts += mapper.insertBatch(users);
+                users.clear();
+            }
         }
         long s = System.nanoTime();
-        int counts = mapper.insertBatch(users);
+        if (users.size() > 0) {
+            counts += mapper.insertBatch(users);
+        }
         long e = System.nanoTime();
-        // 5545983756 > 本方法最快 
-        // 6007770095 >方法三
-        //根据实际场景来，如大数据量使用方法三，关键是测试mbatis的批量执行最大边界
+        // 100条> 37343029
+        // 200条> 34796082
+        // 500条 > 33109665
+        // 1000条>61176433
+        // 根据实际场景来，如大数据量使用方法三，关键是测试mbatis的批量执行最大边界
         System.out.println("users size : " + users.size() + "，insert counts : " + counts + "，用时：" + (e - s));
         Assert.assertTrue("批量插入成功", counts > 0);
     }
 
+    private User getUser(int i) {
+        User user = new User();
+        user.setName("原来你也在这里" + i);
+        user.setAge(18 + i);
+        user.setVersion(i);
+        user.setEmail(i + "davidliuzd@sina.com");
+        user.setStatus(UserStatusEnum.NORMAL);
+        user.setMark(0);
+        return user;
+    }
+
     @Test
     public void testInserts2() {
-        int size = 10000;
         long s = System.nanoTime();
         int counts = 0;
         for (int i = 0; i < size; i++) {
-            User user = new User();
-            user.setName("原来你也在这里" + i);
-            user.setAge(18 + i);
-            user.setEmail(i + "davidliuzd@sina.com");
-            user.setStatus(UserStatusEnum.NORMAL);
+            User user = getUser(i);
             Assert.assertTrue(mapper.insert(user) > 0);
             counts++;
         }
@@ -103,13 +117,8 @@ public class UserMapperTest {
     @Test
     public void testInserts3() {
         List<User> users = new ArrayList<>();
-        int size = 10000;
         for (int i = 0; i < size; i++) {
-            User user = new User();
-            user.setName("原来你也在这里" + i);
-            user.setAge(18 + i);
-            user.setEmail(i + "davidliuzd@sina.com");
-            user.setStatus(UserStatusEnum.NORMAL);
+            User user = getUser(i);
             users.add(user);
         }
         long s = System.nanoTime();
@@ -140,29 +149,21 @@ public class UserMapperTest {
             batchSqlSession.close();
         }
         long e = System.nanoTime();
-        //6007770095
+        // 6007770095
         System.out.println("users size : " + users.size() + "，insert counts : " + size + "，用时：" + (e - s));
     }
 
     @Test
     public void testInsert() {
-        User user = new User();
-        user.setName("原来你也在这里");
-        user.setAge(18);
-        user.setEmail("davidliuzd@sina.com");
-        user.setStatus(UserStatusEnum.NORMAL);
+        User user = getUser(new Random().nextInt(100));
         Assert.assertTrue(mapper.insert(user) > 0);
         // 成功直接拿会写的 ID
         System.err.println("\n插入成功 ID 为：" + user.getId());
     }
-    
+
     @Test
     public void testSaveOne() {
-        User user = new User();
-        user.setName("原来你也在这里");
-        user.setAge(18);
-        user.setEmail("davidliuzd@sina.com");
-        user.setStatus(UserStatusEnum.NORMAL);
+        User user = getUser(new Random().nextInt(100));
         Assert.assertTrue(mapper.saveOne(user) > 0);
         // 成功直接拿会写的 ID
         System.err.println("\n插入成功 ID 为：" + user.getId());
@@ -176,31 +177,26 @@ public class UserMapperTest {
     @Test
     public void testDelAll() {
         mapper.deleteAll();
-    } 
+    }
 
     private <T> void print(List<T> list) {
         if (!CollectionUtils.isEmpty(list)) {
             list.forEach(System.out::println);
         }
     }
-    
+
     @Test
     public void bDelete() {
-        //更新字段：deleted 为1
+        // 更新字段：deleted 为1
         Assert.assertTrue(mapper.deleteById(3L) > 0);
-        Assert.assertTrue(mapper.delete(new QueryWrapper<User>()
-                .lambda().eq(User::getName, "Jack")) > 0);
+        Assert.assertTrue(mapper.delete(new QueryWrapper<User>().lambda().eq(User::getName, "Jack")) > 0);
     }
-
 
     @Test
     public void cUpdate() {
-        Assert.assertTrue(mapper.update(new User().setName("Jack"),
-                new UpdateWrapper<User>().lambda()
-                        .set(User::getAge, 3)
-                        .eq(User::getId, 2)) > 0);
+        Assert.assertTrue(mapper.update(new User().setName("Jack"), new UpdateWrapper<User>().lambda().set(User::getAge,
+                3).eq(User::getId, 2)) > 0);
     }
-
 
     @Test
     public void dSelect() {
@@ -209,12 +205,12 @@ public class UserMapperTest {
         Assert.assertEquals("Jack", user.getName());
         Assert.assertTrue(22 == user.getAge());
     }
-    
-    /** 
-    * @author 2019年3月19日 上午11:38:49
-    * @Title: testUpdateByIdSucc 
-    * @Description:乐观锁   void   
-    */
+
+    /**
+     * @author 2019年3月19日 上午11:38:49
+     * @Title: testUpdateByIdSucc
+     * @Description:乐观锁 void
+     */
     @Test
     public void testUpdateByIdSucc() {
         User user = new User();

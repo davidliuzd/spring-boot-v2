@@ -10,9 +10,6 @@ import org.apache.ibatis.type.JdbcType;
 
 /**
  * 重写字段:email写入值的控制 typeHandler
- *
- * @author miemie
- * @since 2018-08-13
  */
 public class UserEmailTypeHandler extends BaseTypeHandler<String> {
 

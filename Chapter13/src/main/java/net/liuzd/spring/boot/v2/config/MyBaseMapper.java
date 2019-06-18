@@ -6,10 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-/**
- * @author miemie
- * @since 2018-08-13
- */
+
 public interface MyBaseMapper<T> extends BaseMapper<T> {
 
     /**
@@ -34,5 +31,5 @@ public interface MyBaseMapper<T> extends BaseMapper<T> {
     * @param list
     * @return  Integer   
     */
-    Integer insertBatch(@Param("List") List<T> list);
+    Integer insertBatch(@Param("list") List<T> list);
 }

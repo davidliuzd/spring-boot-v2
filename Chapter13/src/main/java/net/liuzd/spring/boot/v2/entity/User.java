@@ -11,8 +11,6 @@ import net.liuzd.spring.boot.v2.entity.enums.UserStatusEnum;
 
 /**
  * 用户表 设置逻辑删除字段,并且逻辑删除字段不 select 出来
- * @author miemie
- * @since 2018-08-12
  */
 @TableName(value = "user")
 @Data
