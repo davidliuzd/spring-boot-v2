@@ -47,12 +47,12 @@
         </javaClientGenerator>
         
         <!-- 要生成的表 tableName是数据库中的表名或视图名 schema是数据库名称   -->
-        <table tableName="t_sys_oper_log" schema="" enableCountByExample="false" 
+        <table tableName="t_sys_premission" schema="" enableCountByExample="false" 
         		enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >      		
         	<generatedKey column="id" sqlStatement="Mysql"/>        	
         	<ignoreColumn column="id" />              	  	
-        </table>
+        </table>       
         
     </context>
 </generatorConfiguration>
