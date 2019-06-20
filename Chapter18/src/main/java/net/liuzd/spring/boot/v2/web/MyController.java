@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndexController {
+public class MyController {
 
-    @GetMapping("/index")
+    @GetMapping("/my")
     public ModelAndView index() {
-        ModelAndView view = new ModelAndView("index");
+        ModelAndView view = new ModelAndView("my");
         view.addObject("host", "https://my.oschina.net/liuzidong");
         return view;
     }

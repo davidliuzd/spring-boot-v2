@@ -7,6 +7,6 @@
     <title>首页</title>
 </head>
 <body>
-    <h2>首页</h2>
+    <h2><a href="${host}">我的博客</a></h2>
 </body>
 </html>
