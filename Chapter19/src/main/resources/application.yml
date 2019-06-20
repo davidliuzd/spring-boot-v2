@@ -26,9 +26,10 @@ logging:
 resources:
     #应用名称
     appname: spring-boot-example
-    #日志打印的基础扫描包
+    #日志打印的基础扫描包  
     basepackage: net.liuzd.spring.boot.v2  
     web:
-       fastjson: false
+       # false为启用Jackson
+       fastjson: true
 
  
