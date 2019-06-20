@@ -40,12 +40,12 @@ public class UserServiceTest {
     @Test
     public void testInserts() {
         List<User> beans = new ArrayList<>();
-        int size = 1000;
+        int size = 1;
+        long s = System.nanoTime();
         for (int i = 0; i < size; i++) {
             User bean = get(i);
             userService.add(bean);
         }
-        long s = System.nanoTime();
         long e = System.nanoTime();
         log.info("size : " + beans.size() + "，insert counts : " + size + "，用时：" + (e - s));
         Assert.assertTrue("批量插入成功", size > 0);

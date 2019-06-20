@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import net.liuzd.spring.boot.v2.common.Enumerable;
 import net.liuzd.spring.boot.v2.util.EnumUtils;
 
+@SuppressWarnings({ "rawtypes", "serial" })
 public class EnumDeserializer<E extends Enumerable> extends StdDeserializer<E> {
 
     private Class<E> enumType;

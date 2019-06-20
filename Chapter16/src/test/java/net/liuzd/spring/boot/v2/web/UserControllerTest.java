@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import cn.hutool.json.JSON;
 import lombok.extern.log4j.Log4j2;
 import net.liuzd.spring.boot.v2.Application;
 import net.liuzd.spring.boot.v2.entity.User;

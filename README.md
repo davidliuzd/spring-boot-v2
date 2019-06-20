@@ -11,7 +11,7 @@
 #### [Chapter9 - Mongo](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter9)
 #### [Chapter10 - Mongo Reactive](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter10)
 #### [Chapter11 - WebFlux](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter11)
-#### [Chapter12 - Hello示例](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter12)
+#### [Chapter12 - Shiro + Thymeleaf + ControllerAdvice](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter12)
 #### [Chapter13 - Hello示例](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter13)
 #### [Chapter14 - Hello示例](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter14)
 #### [Chapter15 - Hello示例](https://github.com/davidliuzd/spring-boot-v2/tree/master/Chapter15)

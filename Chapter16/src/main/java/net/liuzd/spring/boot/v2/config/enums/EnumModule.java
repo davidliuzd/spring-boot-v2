@@ -21,10 +21,6 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import net.liuzd.spring.boot.v2.common.Enumerable;
 import net.liuzd.spring.boot.v2.util.EnumUtils;
 
-/**
- * @author shiyajian
- * create: 2019-03-21
- */
 public class EnumModule extends SimpleModule {
 
     public EnumModule() {
@@ -34,15 +30,15 @@ public class EnumModule extends SimpleModule {
     }
 
     private static class CustomDeserializers extends SimpleDeserializers {
-        private CustomDeserializers() {
-        }
+
+        private CustomDeserializers() {}
 
         @Override
-        @SuppressWarnings({"rawtypes", "unchecked"})
-        public JsonDeserializer<?> findEnumDeserializer(Class<?> type, DeserializationConfig config, BeanDescription beanDesc) throws JsonMappingException {
-            return Enumerable.class.isAssignableFrom(type) ?
-                    new EnumDeserializer(type) :
-                    super.findEnumDeserializer(type, config, beanDesc);
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+        public JsonDeserializer<?> findEnumDeserializer(Class<?> type, DeserializationConfig config,
+                BeanDescription beanDesc) throws JsonMappingException {
+            return Enumerable.class.isAssignableFrom(type) ? new EnumDeserializer(type)
+                    : super.findEnumDeserializer(type, config, beanDesc);
         }
 
         private static class EnumDeserializer<E extends Enumerable> extends StdScalarDeserializer<E> {
@@ -80,7 +76,8 @@ public class EnumModule extends SimpleModule {
         }
 
         @Override
-        public void serialize(Enumerable enumerable, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
+        public void serialize(Enumerable enumerable, JsonGenerator jsonGenerator, SerializerProvider provider)
+                throws IOException {
             jsonGenerator.writeStartObject();
             jsonGenerator.writeNumberField("value", enumerable.getValue());
             jsonGenerator.writeStringField("text", enumerable.getKey());

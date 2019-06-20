@@ -6,10 +6,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-/**
- * @author shiyajian
- * create: 2018-12-27
- */
 @Component
 public class SpringContextHolder implements ApplicationContextAware {
 
@@ -20,7 +16,16 @@ public class SpringContextHolder implements ApplicationContextAware {
         ctx = applicationContext;
     }
 
-    public static Object getBean(@Nonnull Class clazz) {
+    public static <T> T getBean(@Nonnull Class<T> clazz) {
         return ctx.getBean(clazz);
     }
+
+    public static boolean contain(String name) {
+        return ctx.containsBean(name);
+    }
+
+    public static boolean isSingleton(String name) {
+        return ctx.isSingleton(name);
+    }
+
 }

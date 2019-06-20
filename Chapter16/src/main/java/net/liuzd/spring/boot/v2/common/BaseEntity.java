@@ -1,23 +1,25 @@
 package net.liuzd.spring.boot.v2.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-
 @Data
 @Accessors(chain = true)
-public class BaseEntity {
+public class BaseEntity implements Serializable {
 
-    private Long    id;
+    private static final long serialVersionUID = 1L;
 
-    private Integer mark;
+    private Long              id;
 
-    private Date    createTime;
+    private Integer           mark;
 
-    private Date    modifyTime;
+    private Date              createTime;
 
-    private Integer version;
+    private Date              modifyTime;
+
+    private Integer           version;
 
 }

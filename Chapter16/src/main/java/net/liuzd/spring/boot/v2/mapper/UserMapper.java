@@ -6,10 +6,9 @@ import java.util.List;
 import net.liuzd.spring.boot.v2.entity.User;
 import net.liuzd.spring.boot.v2.entity.query.UserQuery;
 
-
 public interface UserMapper {
 
-    public Serializable insert(User bean);
+    public Long insert(User bean);
 
     public int update(User bean);
 

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 
 public class ServletContextHolder {
 
-    private ServletContextHolder() { /* no instance */ }
+    private ServletContextHolder() {
+
+    }
 
     /**
      * 通过静态方法获得当前的request对象
